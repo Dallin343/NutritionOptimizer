@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  RabbitMQ:
+    image: 'rabbitmq:3-management'
+    container_name: 'rabbitmq'
+    hostname: 'rabbitmq'
+    volumes:
+      - "./lib:/var/lib/rabbitmq"
+    ports:
+      - 8080:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "112196"
+    networks:
+      - worker_net
+
+networks:
+  worker_net:
+    external: true
